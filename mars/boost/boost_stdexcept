@@ -1,0 +1,59 @@
+
+#ifndef _STLP_STDEXCEPT
+#define _STLP_STDEXCEPT 1
+
+
+#include <exception>
+#include <string>
+
+namespace std
+{
+
+  class logic_error2 : public exception {
+
+  public:
+
+    logic_error2(const string& _msg): msg_(_msg) {}
+    logic_error2() {}
+
+    virtual ~logic_error2() throw() {}
+
+    virtual const char* what() const throw() {return msg_.c_str();}
+
+  private:
+	std::string msg_;
+	
+  };
+
+  class invalid_argument2 : public logic_error2 {
+  public:
+    invalid_argument2(const string& _msg):logic_error2(_msg) {}
+
+  };
+
+  class out_of_range2 : public logic_error2 {
+  public:
+    out_of_range2(const string& _msg): logic_error2(_msg) {}
+
+  };
+
+
+  class runtime_error2 : public exception
+  {
+
+  public:
+
+    runtime_error2(const string& _msg): msg_(_msg) {}
+    runtime_error2() {}
+
+    virtual const char* what() const throw() {return msg_.c_str();}
+
+  private:
+	std::string msg_;
+	
+
+  };
+
+
+} 
+#endif 
